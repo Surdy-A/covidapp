@@ -1,0 +1,184 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <link rel="icon" href="/docs/4.1/assets/img/favicons/favicon.ico" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+      integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Covid Stats</title>
+
+    <link
+      rel="canonical"
+      href="https://getbootstrap.com/docs/4.1/examples/pricing/"
+    />
+
+    <style>
+      .center-screen {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        min-height: 100vh;
+      }
+
+      @media only screen and (min-width: 575px) {
+        .nl {
+          margin:auto;
+        }
+      }
+      .flist{
+         list-style:none; 
+      }
+    </style>
+  </head>
+
+  <body>
+    <div
+      class="
+        d-flex
+        flex-column flex-md-row
+        align-items-center
+        p-3
+        px-md-4
+        mb-3
+        bg-white
+        border-bottom
+        shadow-sm
+      "
+    >
+      <h5 class="my-0 mr-md-auto font-weight-normal"><span style="color: blue"><a href="">Covid-19 Stats</a></span></h5>
+      <nav class="my-2 my-md-0 mr-md-3 dark">
+        <a class="p-2 text-dark" href="">Home</a>
+        <a class="p-2 text-dark" href="">Guide</a>
+      </nav>
+    </div>
+
+    <div class="container mx-auto text-center">
+      <h1 style="color: white; text-align: center">
+        <span style="color: blue">COVID-19</span>
+        <span style="color: black">WORLDWIDE DATA</span>
+      </h1>
+
+      <form method="post" action="" class="mx-auto">
+        <div class="form-group">
+          {% csrf_token %}
+          <select
+            class="form-control form-control-lg mb-3"
+            name="selectedcountry"
+          >
+            {% for country in country_list %}
+            <option>{{country}}</option>
+            {% endfor %}
+          </select>
+          <input
+            type="submit"
+            class="btn btn-outline-primary btn-lg btn-block"
+            name=""
+          />
+        </div>
+      </form>
+
+      <h1 style="color: black; text-align: center">{{selectedcountry}}</h1>
+      <div class="mx-auto nl">
+        <ul class="list-group list-group-horizontal">
+          <div class="row mt-5 mr-5 ml-5 mb-0">
+            <li
+              class="list-group-item list-group-item-light col-sm-3 mb-5"
+              style="background-color: orange"
+            >
+              <p style="text-align: center; color: white">Total</p>
+              <h1 style="text-align: center; color: white">{{total}}</h1>
+            </li>
+            <li class="list-group-item list-group-item-success col-sm-3 mb-5">
+              <p style="text-align: center; color: black">Recovered</p>
+              <h1 style="text-align: center; color: black">{{recovered}}</h1>
+            </li>
+            <li class="list-group-item list-group-item-warning col-sm-3 mb-5">
+              <p style="text-align: center; color: black">Active</p>
+              <h1 style="text-align: center; color: black">{{active}}</h1>
+            </li>
+          </div>
+          <div class="row mt-0 mr-5 ml-5 mb-0">
+            <li class="list-group-item list-group-item-primary col-sm-3 mb-5">
+              <p style="text-align: center; color: black">New</p>
+              <h1 style="text-align: center; color: black">{{new}}</h1>
+            </li>
+            <li class="list-group-item list-group-item-dark col-sm-3 mb-5">
+              <p style="text-align: center; color: black">Deaths</p>
+              <h1 style="text-align: center; color: black">{{deaths}}</h1>
+            </li>
+            <li class="list-group-item list-group-item-danger col-sm-3 mb-5">
+              <p style="text-align: center; color: black">Critical</p>
+              <h1 style="text-align: center; color: black">{{critical}}</h1>
+            </li>
+          </div>
+        </ul>
+      </div>
+       <footer class=" border-top text-center bg-primary">
+          <div class="bg-primary">
+          <h5>Built with <i class="bi bi-heart-fill"></i> by
+          <ul class="list-group">
+          <li class="list-group-item"><a href="tel:+13174562564">317-456-2564</a></li>
+          <li class="list-group-item"><a href="email:sodiq.ajayi@yahoo.com">sodiq.ajayi@yahoo.com</a></li>
+          <li class="list-group-item"><a href="https://surdy-a.github.io/mysite2/" taget="__blank">website</a></li>
+          </div>
+      </footer>
+    </div>
+
+     
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      window.jQuery ||
+        document.write(
+          '<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>'
+        );
+    </script>
+    <script src="../../assets/js/vendor/popper.min.js"></script>
+    <script src="../../dist/js/bootstrap.min.js"></script>
+    <script src="../../assets/js/vendor/holder.min.js"></script>
+    <script>
+      Holder.addTheme("thumb", {
+        bg: "#55595c",
+        fg: "#eceeef",
+        text: "Thumbnail",
+      });
+    </script>
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+      integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+      integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
